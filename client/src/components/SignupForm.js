@@ -22,6 +22,7 @@ const SignupForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log("Hey");
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
@@ -31,8 +32,13 @@ const SignupForm = () => {
     }
 
     try {
+      console.log(userFormData);
       const response = await addUser({
-        variables: {userFormData}
+        variables: {
+          username: userFormData.username,
+          email: userFormData.email,
+          password: userFormData.password
+        }
       });
 
       if (!response.ok) {

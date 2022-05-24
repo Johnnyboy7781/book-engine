@@ -12,7 +12,7 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token')
+  const token = localStorage.getItem('book_engine_id_token')
   return {
     headers: {
       ...headers,
@@ -28,7 +28,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloClient client={client} >
+    <ApolloProvider client={client} >
       <Router>
         <>
           <Navbar />
@@ -39,7 +39,7 @@ function App() {
           </Switch>
         </>
       </Router>
-    </ApolloClient>
+    </ApolloProvider>
   );
 }
 
